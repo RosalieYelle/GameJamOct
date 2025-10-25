@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private float moveX;
     private float moveY;
 
+    public bool canMove = true;
+
 
     void Start()
     {
@@ -22,7 +24,13 @@ public class PlayerController : MonoBehaviour
         // Debug.Log(move);
         // Vector2 position = (Vector2)transform.position + move * 0.1f;
         // transform.position = position;
-        
+
+        // Makes the player unabe to move in dialogue
+        if (!canMove)
+        {
+            return;
+        }
+
         moveX = 0f; //No movement
         moveY = 0f; //No movement
 
