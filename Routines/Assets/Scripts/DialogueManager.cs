@@ -25,6 +25,13 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private string currentLine = "";
 
+    //Sprite Changes
+    [Header("Character Portrait")]
+    public Image characterImage; // Drag your UI Image here
+
+    [Tooltip("0 = neutral, 1 = happy, 2 = angry, 3 = surprised (in order you decide)")]
+    public Sprite[] expressionSprites;
+
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
@@ -58,6 +65,9 @@ public class DialogueManager : MonoBehaviour
 
         string text = "";
 
+        // Handle any tags from the current line
+        HandleTags(story.currentTags);
+
         while (story.canContinue)
         {
             text += story.Continue();
@@ -69,7 +79,7 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingRoutine);
 
         typingRoutine = StartCoroutine(TypeText(text.Trim()));
-
+        
         if (story.currentChoices.Count > 0)
         {
             waitingForContinue = false;
@@ -141,4 +151,47 @@ public class DialogueManager : MonoBehaviour
         // Show icon ONLY when text is done AND no choices visible
         continueIcon.SetActive(textDone && !hasChoices && canContinue);
     }
+    //For the different sprite expressions
+    void HandleTags(System.Collections.Generic.List<string> tags)
+    {
+        foreach (string tag in tags)
+        {
+            Debug.Log("Raw Tag: " + tag);
+
+            if (tag.StartsWith("sprite:"))
+            {
+                string[] splitTag = tag.Split(' ');
+                string spriteTagPart = splitTag[0];  // only keep first token
+
+                string spriteName = spriteTagPart.Split(':')[1].Trim().ToLower();
+                ChangeSprite(spriteName);
+            }
+        }
+    }
+
+    void ChangeSprite(string spriteName)
+    {
+        Debug.Log("Changing sprite to: " + spriteName);
+        switch (spriteName)
+        {
+            case "neutral":
+                characterImage.sprite = expressionSprites[0];
+                break;
+            case "happy":
+                characterImage.sprite = expressionSprites[1];
+                break;
+            case "angry":
+                characterImage.sprite = expressionSprites[2];
+                break;
+            case "surprised":
+                characterImage.sprite = expressionSprites[3];
+                break;
+            default:
+                Debug.LogWarning("Unknown sprite tag: " + spriteName);
+                break;
+        }
+        characterImage.preserveAspect = true; 
+    }
+
+
 }

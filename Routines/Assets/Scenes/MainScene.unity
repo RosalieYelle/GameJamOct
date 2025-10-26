@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9176471, g: 0.7568628, b: 0.7294118, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,7 +206,8 @@ Transform:
   m_LocalPosition: {x: 4.3403, y: -0.0473, z: 0}
   m_LocalScale: {x: 8.409148, y: 9.399534, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 370372923}
   m_Father: {fileID: 1796543698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &37247216
@@ -715,6 +716,81 @@ MonoBehaviour:
   closeUpCamera: {fileID: 37247218}
   mainCamera: {fileID: 1141368666}
   dialogueInkFile: {fileID: 4900000, guid: fe1e76d9690ab3644935aa924d0ebd82, type: 3}
+--- !u!1 &370372922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 370372923}
+  - component: {fileID: 370372925}
+  - component: {fileID: 370372924}
+  m_Layer: 0
+  m_Name: Client
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &370372923
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370372922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22040401}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00096, y: -0.00199}
+  m_SizeDelta: {x: 0.79575, y: 1.00505}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &370372924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370372922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &370372925
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370372922}
+  m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,7 +2366,7 @@ MonoBehaviour:
   interactUI: {fileID: 1718297274}
   closeUpCamera: {fileID: 37247218}
   mainCamera: {fileID: 1141368666}
-  dialogueInkFile: {fileID: 4900000, guid: 01c7148b5b90a3549ba12aad9210de61, type: 3}
+  dialogueInkFile: {fileID: 4900000, guid: fe1e76d9690ab3644935aa924d0ebd82, type: 3}
 --- !u!61 &1209652418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2392,6 +2468,12 @@ MonoBehaviour:
   typingSpeed: 0.03
   audioSource: {fileID: 534904280}
   continueIcon: {fileID: 1679256888}
+  characterImage: {fileID: 370372924}
+  expressionSprites:
+  - {fileID: 7098854511174367547, guid: a3d4f969c6eadc9458569dbbcaf5c9d5, type: 3}
+  - {fileID: 9200764644129784342, guid: faaf0cdc2b3a2f84abdb58472c77f485, type: 3}
+  - {fileID: -7056297054428698818, guid: 914b2e68af69e9b43b398a3581a35c9f, type: 3}
+  - {fileID: -343620253473570120, guid: 914b2e68af69e9b43b398a3581a35c9f, type: 3}
 --- !u!1 &1316941570
 GameObject:
   m_ObjectHideFlags: 0

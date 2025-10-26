@@ -1,30 +1,25 @@
-LONDON, 1872
-Residence of Monsieur Phileas Fogg.
--> london
+-> start
 
-=== london ===
-Monsieur Phileas Fogg returned home early from the Reform Club, and in a new-fangled steam-carriage, besides!  
-"Passepartout," said he. "We are going around the world!"
+=== start ===
+#sprite:neutral Hi there! Welcome to our emotion test.
+-> emotion_choice
 
-+ "Around the world, Monsieur?"
-    I was utterly astonished. 
-    -> astonished
-+ [Nod curtly.] -> nod
+=== emotion_choice ===
+How am I feeling right now?
 
++ I'm happy!
+    #sprite:happy Yay! I'm so happy you're here!
+    -> emotion_choice
 
-=== astonished ===
-"You are in jest!" I told him in dignified affront. "You make mock of me, Monsieur."
-"I am quite serious."
++ I'm angry!
+    #sprite:angry Grrr! Why is everything SO ANNOYING!?
+    -> emotion_choice
 
-+ "But of course"
-    -> ending
++ I'm surprised!
+    #sprite:surprised Whoa!! I did not see that coming!
+    -> emotion_choice
 
++ I'm done testing!
+    #sprite:neutral Okay! Back to normal.
+    -> END
 
-=== nod ===
-I nodded curtly, not believing a word of it.
--> ending
-
-
-=== ending
-"We shall circumnavigate the globe within eighty days." He was quite calm as he proposed this wild scheme. "We leave for Paris on the 8:25. In an hour."
--> END
