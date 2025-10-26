@@ -87,12 +87,6 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
-        // If no sprite tag found on this line, show neutral by default
-        // if (!story.currentTags.Exists(t => t.StartsWith("sprite:")))
-        // {
-        //     ChangeSprite("neutral");
-        // }
-
         if (typingRoutine != null)
             StopCoroutine(typingRoutine);
 
@@ -177,7 +171,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("Raw Tag: " + tag);
 
-            if (tag.StartsWith("sprite:"))
+            if (tag.StartsWith("face:"))
             {
                 string[] splitTag = tag.Split(' ');
                 string spriteTagPart = splitTag[0];  // only keep first token
@@ -203,11 +197,14 @@ public class DialogueManager : MonoBehaviour
             case "happy":
                 newExpression = currentClientExpressions.Length > 1 ? currentClientExpressions[1] : currentClientExpressions[0];
                 break;
-            case "angry":
+            case "fake_happy":
                 newExpression = currentClientExpressions.Length > 2 ? currentClientExpressions[2] : currentClientExpressions[0];
                 break;
-            case "surprised":
+            case "mask_happy":
                 newExpression = currentClientExpressions.Length > 3 ? currentClientExpressions[3] : currentClientExpressions[0];
+                break;
+            case "mask_neutral":
+                newExpression = currentClientExpressions.Length > 4 ? currentClientExpressions[4] : currentClientExpressions[0];
                 break;
             default:
                 Debug.LogWarning("Unknown sprite tag: " + spriteName);

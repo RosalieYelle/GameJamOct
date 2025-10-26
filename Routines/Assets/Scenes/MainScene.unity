@@ -553,8 +553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0601, y: -0.0292}
-  m_SizeDelta: {x: 0.7689, y: 0.9498}
+  m_AnchoredPosition: {x: 0.0103, y: -0.0292}
+  m_SizeDelta: {x: 0.7898, y: 0.9498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370372924
 MonoBehaviour:
@@ -1406,7 +1406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.02, y: -0.09}
+  m_AnchoredPosition: {x: -19.7, y: 0.11}
   m_SizeDelta: {x: 1920.0001, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &619394800
@@ -2749,8 +2749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0601, y: -0.0292}
-  m_SizeDelta: {x: 0.7689, y: 0.9498}
+  m_AnchoredPosition: {x: 0.023, y: -0.0189}
+  m_SizeDelta: {x: 0.7895, y: 0.9513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997356609
 MonoBehaviour:
@@ -3291,56 +3291,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayManager
   days:
   - clients:
-    - inkFile: {fileID: 4900000, guid: c2826edf3b5b9c44489e56e6caf8d508, type: 3}
+    - inkFile: {fileID: 4900000, guid: e272333d67c66f641b513251897ab306, type: 3}
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
-      portrait: {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
-      - {fileID: 21300000, guid: 6c89c4f2e3d5e654f83441d027ca7e35, type: 3}
+      - {fileID: -269403403274628182, guid: 6c89c4f2e3d5e654f83441d027ca7e35, type: 3}
       - {fileID: -7032763119560445113, guid: 2abb916b4eafcdd4dac9f9de91cb7f2f, type: 3}
       - {fileID: 4730570371508730561, guid: 12e016d007ebe8e4289326c492b209c3, type: 3}
+      - {fileID: -627352529767487224, guid: 5ac0edf5397bdae4ea2867427641a0f1, type: 3}
     - inkFile: {fileID: 4900000, guid: c14b16a31be4a5644985cdb12d7b23b4, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
-      portrait: {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
       - {fileID: 503956333291831865, guid: 1094310401d0655459f8722ad8f4c091, type: 3}
       - {fileID: 6650012671500831742, guid: 07e60f2ff6623ba4bbab27f6b6e53724, type: 3}
       - {fileID: -5568726011883446873, guid: 541854c4b9c64e24394c67b6bad46f84, type: 3}
+      - {fileID: 4127925414951745073, guid: fdd2901b606121b4ea197300ebb3e62e, type: 3}
   - clients:
     - inkFile: {fileID: 4900000, guid: 01c7148b5b90a3549ba12aad9210de61, type: 3}
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
-      portrait: {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
       - {fileID: 21300000, guid: 6c89c4f2e3d5e654f83441d027ca7e35, type: 3}
       - {fileID: -7032763119560445113, guid: 2abb916b4eafcdd4dac9f9de91cb7f2f, type: 3}
       - {fileID: 4730570371508730561, guid: 12e016d007ebe8e4289326c492b209c3, type: 3}
+      - {fileID: -627352529767487224, guid: 5ac0edf5397bdae4ea2867427641a0f1, type: 3}
     - inkFile: {fileID: 4900000, guid: c67ea45aaebb26b46ae8f7e7b3d19de0, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
-      portrait: {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
       - {fileID: 503956333291831865, guid: 1094310401d0655459f8722ad8f4c091, type: 3}
       - {fileID: 6650012671500831742, guid: 07e60f2ff6623ba4bbab27f6b6e53724, type: 3}
       - {fileID: -5568726011883446873, guid: 541854c4b9c64e24394c67b6bad46f84, type: 3}
+      - {fileID: 4127925414951745073, guid: fdd2901b606121b4ea197300ebb3e62e, type: 3}
   - clients:
     - inkFile: {fileID: 4900000, guid: 35a103de5bc15304ba814d9d467f03be, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
-      portrait: {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
       - {fileID: 503956333291831865, guid: 1094310401d0655459f8722ad8f4c091, type: 3}
       - {fileID: 6650012671500831742, guid: 07e60f2ff6623ba4bbab27f6b6e53724, type: 3}
       - {fileID: -5568726011883446873, guid: 541854c4b9c64e24394c67b6bad46f84, type: 3}
+      - {fileID: 4127925414951745073, guid: fdd2901b606121b4ea197300ebb3e62e, type: 3}
     - inkFile: {fileID: 4900000, guid: d89a6441228f32d488f695a6e87e19b6, type: 3}
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
-      portrait: {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
+      portrait: {fileID: -4698600402995417950, guid: e1d1616b1ab1a3a4c84f1c78af34f9b0, type: 3}
       expressionSprites:
       - {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
       - {fileID: 21300000, guid: 6c89c4f2e3d5e654f83441d027ca7e35, type: 3}
       - {fileID: -7032763119560445113, guid: 2abb916b4eafcdd4dac9f9de91cb7f2f, type: 3}
       - {fileID: 4730570371508730561, guid: 12e016d007ebe8e4289326c492b209c3, type: 3}
+      - {fileID: -627352529767487224, guid: 5ac0edf5397bdae4ea2867427641a0f1, type: 3}
   currentDay: 0
   currentClient: 0
   dialogueManager: {fileID: 1222634527}
