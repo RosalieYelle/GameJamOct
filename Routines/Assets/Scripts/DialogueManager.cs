@@ -58,6 +58,57 @@ public class DialogueManager : MonoBehaviour
 
         GlobalInkVarStore.Instance.PushToStory(story);
 
+        object value;
+        if (GlobalInkVarStore.Instance.TryGet("break_up", out value))
+        {
+            int break_up_value = (int)value;
+            Debug.Log("break_up:" + break_up_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'break_up' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("ending", out value))
+        {
+            string ending_value = (string)value;
+            Debug.Log("ending:" + ending_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'ending' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("mask_bernadette", out value))
+        {
+            bool mask_bernadette_value = (bool)value;
+            Debug.Log("mask_bernadette:" + mask_bernadette_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'mask_bernadette' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("mask_mateo", out value))
+        {
+            bool mask_mateo_value = (bool)value;
+            Debug.Log("mask_mateo:" + mask_mateo_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'mask_mateo' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("inspired", out value))
+        {
+            bool inspired_value = (bool)value;
+            Debug.Log("inspired:" + inspired_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'inspired' yet");
+        }
+
         currentClientExpressions = clientData.expressionSprites; 
 
         // Initialize base face
