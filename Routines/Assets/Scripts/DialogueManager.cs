@@ -55,6 +55,9 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(ClientData clientData)
     {
         story = new Story(clientData.inkFile.text);
+
+        GlobalInkVarStore.Instance.PushToStory(story);
+
         currentClientExpressions = clientData.expressionSprites; 
 
         // Initialize base face
@@ -111,6 +114,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            GlobalInkVarStore.Instance.PullFromStory(story);
             onDialogueEnd?.Invoke();
         }
 
@@ -133,6 +137,9 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
+        dialogueText.enableAutoSizing = false;
+        dialogueText.fontSize = 0.35f;
+        text = text.Replace("\n", "\n\n");
         currentLine = text;
 
         foreach (char c in text)
