@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 914b2e68af69e9b43b398a3581a35c9f
+guid: 40fac89558bd10d45a144257f29628de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5363794283222939217
-    second: GreenSpaceshipAnimated_0
+      213: 3215267146430077192
+    second: Mateo FakeHappy v2_0
   - first:
-      213: -2738726240977899061
-    second: GreenSpaceshipAnimated_1
+      213: -7790093061211623385
+    second: Mateo FakeHappy v2_1
   - first:
-      213: -7056297054428698818
-    second: GreenSpaceshipAnimated_2
+      213: 1866343594293286519
+    second: Mateo FakeHappy v2_2
   - first:
-      213: 6733041892138391709
-    second: GreenSpaceshipAnimated_3
-  - first:
-      213: -343620253473570120
-    second: GreenSpaceshipAnimated_4
+      213: -1568920484590921618
+    second: Mateo FakeHappy v2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenSpaceshipAnimated_0
+      name: Mateo FakeHappy v2_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 184
-        width: 121
-        height: 209
+        x: 34
+        y: 65
+        width: 11
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa9c93c9489ff85b0800000000000000
-      internalID: -5363794283222939217
+      spriteID: 809d2f83f6cee9c20800000000000000
+      internalID: 3215267146430077192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenSpaceshipAnimated_1
+      name: Mateo FakeHappy v2_1
       rect:
         serializedVersion: 2
-        x: 237
-        y: 185
-        width: 90
-        height: 208
+        x: 42
+        y: 56
+        width: 9
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc1b8758ef61ef9d0800000000000000
-      internalID: -2738726240977899061
+      spriteID: 720fe3f62a704e390800000000000000
+      internalID: -7790093061211623385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenSpaceshipAnimated_2
+      name: Mateo FakeHappy v2_2
       rect:
         serializedVersion: 2
-        x: 385
-        y: 185
-        width: 118
-        height: 208
+        x: 49
+        y: 65
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e376421073ff21e90800000000000000
-      internalID: -7056297054428698818
+      spriteID: 7765da65c9596e910800000000000000
+      internalID: 1866343594293286519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenSpaceshipAnimated_3
+      name: Mateo FakeHappy v2_3
       rect:
         serializedVersion: 2
-        x: 559
-        y: 186
-        width: 92
-        height: 209
+        x: 39
+        y: 48
+        width: 16
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,30 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d989bbe7de1907d50800000000000000
-      internalID: 6733041892138391709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GreenSpaceshipAnimated_4
-      rect:
-        serializedVersion: 2
-        x: 716
-        y: 185
-        width: 121
-        height: 209
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b2041633373b3bf0800000000000000
-      internalID: -343620253473570120
+      spriteID: e68df1bb1231a3ae0800000000000000
+      internalID: -1568920484590921618
       vertices: []
       indices: 
       edges: []
@@ -235,11 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GreenSpaceshipAnimated_0: -5363794283222939217
-      GreenSpaceshipAnimated_1: -2738726240977899061
-      GreenSpaceshipAnimated_2: -7056297054428698818
-      GreenSpaceshipAnimated_3: 6733041892138391709
-      GreenSpaceshipAnimated_4: -343620253473570120
+      Mateo FakeHappy v2_0: 3215267146430077192
+      Mateo FakeHappy v2_1: -7790093061211623385
+      Mateo FakeHappy v2_2: 1866343594293286519
+      Mateo FakeHappy v2_3: -1568920484590921618
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

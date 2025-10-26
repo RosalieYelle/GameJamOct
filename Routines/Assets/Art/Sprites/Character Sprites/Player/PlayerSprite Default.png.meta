@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: faaf0cdc2b3a2f84abdb58472c77f485
+guid: 47bb7c14ca8ff7b40957dcfd4c0841c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9200764644129784342
-    second: Jose v1_0
+      213: 1036833082192815319
+    second: PlayerSprite Default_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jose v1_0
+      name: PlayerSprite Default_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 5
-        width: 74
-        height: 91
+        x: 0
+        y: 0
+        width: 14
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 612445332beafaf70800000000000000
-      internalID: 9200764644129784342
+      spriteID: 7d4e973e132936e00800000000000000
+      internalID: 1036833082192815319
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jose v1_0: 9200764644129784342
+      PlayerSprite Default_0: 1036833082192815319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
