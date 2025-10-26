@@ -3295,18 +3295,18 @@ MonoBehaviour:
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
       portrait: {fileID: -5622917851967419265, guid: 673bb3ca497343d4e83f508eefd9a58d, type: 3}
       expressionSprites:
-      - {fileID: 21300000, guid: 4e54371797ef62341ae65f7713cfaf63, type: 3}
-      - {fileID: 21300000, guid: 7192ca7183d7d6a4bb043fe2f90a4535, type: 3}
-      - {fileID: 21300000, guid: d9860f4fd7b2b5f4da96bf7f4ee1d79b, type: 3}
-      - {fileID: 21300000, guid: a8869d5ce13ee8c4ea18a9c99e0355a7, type: 3}
-    - inkFile: {fileID: 4900000, guid: fe1e76d9690ab3644935aa924d0ebd82, type: 3}
+      - {fileID: 6913126056127726483, guid: d8debefae3119154f8cf83c5c35aa5a0, type: 3}
+      - {fileID: 21300000, guid: 6c89c4f2e3d5e654f83441d027ca7e35, type: 3}
+      - {fileID: -7032763119560445113, guid: 2abb916b4eafcdd4dac9f9de91cb7f2f, type: 3}
+      - {fileID: 4730570371508730561, guid: 12e016d007ebe8e4289326c492b209c3, type: 3}
+    - inkFile: {fileID: 4900000, guid: c14b16a31be4a5644985cdb12d7b23b4, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
-      portrait: {fileID: 21300000, guid: c4756278b6d21a649b667a85fcbc3649, type: 3}
+      portrait: {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
       expressionSprites:
-      - {fileID: 21300000, guid: efff6813b3e318a4d85b90664506c111, type: 3}
-      - {fileID: 21300000, guid: b3167ae704b0df748bb0eb4681a3a11f, type: 3}
-      - {fileID: 21300000, guid: 40fac89558bd10d45a144257f29628de, type: 3}
-      - {fileID: 21300000, guid: da7386a283862b940bd38594cd730f11, type: 3}
+      - {fileID: -620728573028231356, guid: 0841d0ca01c65ca4a831f5af48b53a14, type: 3}
+      - {fileID: 503956333291831865, guid: 1094310401d0655459f8722ad8f4c091, type: 3}
+      - {fileID: 6650012671500831742, guid: 07e60f2ff6623ba4bbab27f6b6e53724, type: 3}
+      - {fileID: -5568726011883446873, guid: 541854c4b9c64e24394c67b6bad46f84, type: 3}
   - clients:
     - inkFile: {fileID: 4900000, guid: 01c7148b5b90a3549ba12aad9210de61, type: 3}
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
@@ -3316,7 +3316,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 7192ca7183d7d6a4bb043fe2f90a4535, type: 3}
       - {fileID: 21300000, guid: d9860f4fd7b2b5f4da96bf7f4ee1d79b, type: 3}
       - {fileID: 21300000, guid: a8869d5ce13ee8c4ea18a9c99e0355a7, type: 3}
-    - inkFile: {fileID: 4900000, guid: fe1e76d9690ab3644935aa924d0ebd82, type: 3}
+    - inkFile: {fileID: 4900000, guid: c67ea45aaebb26b46ae8f7e7b3d19de0, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
       portrait: {fileID: 21300000, guid: c4756278b6d21a649b667a85fcbc3649, type: 3}
       expressionSprites:
@@ -3325,7 +3325,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 40fac89558bd10d45a144257f29628de, type: 3}
       - {fileID: 21300000, guid: da7386a283862b940bd38594cd730f11, type: 3}
   - clients:
-    - inkFile: {fileID: 4900000, guid: c2826edf3b5b9c44489e56e6caf8d508, type: 3}
+    - inkFile: {fileID: 4900000, guid: 35a103de5bc15304ba814d9d467f03be, type: 3}
       clientSpriteLayingDown: {fileID: 5432014957950813534, guid: 779b9325497172d4b96efc5a88ee962e, type: 3}
       portrait: {fileID: 21300000, guid: c4756278b6d21a649b667a85fcbc3649, type: 3}
       expressionSprites:
@@ -3333,7 +3333,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: b3167ae704b0df748bb0eb4681a3a11f, type: 3}
       - {fileID: 21300000, guid: 40fac89558bd10d45a144257f29628de, type: 3}
       - {fileID: 21300000, guid: da7386a283862b940bd38594cd730f11, type: 3}
-    - inkFile: {fileID: 4900000, guid: 01c7148b5b90a3549ba12aad9210de61, type: 3}
+    - inkFile: {fileID: 4900000, guid: d89a6441228f32d488f695a6e87e19b6, type: 3}
       clientSpriteLayingDown: {fileID: 469276647452246755, guid: 5a19a1fd8ee4cde4f83f8595165a7c6a, type: 3}
       portrait: {fileID: -5622917851967419265, guid: 673bb3ca497343d4e83f508eefd9a58d, type: 3}
       expressionSprites:
