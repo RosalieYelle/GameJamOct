@@ -5,6 +5,9 @@ public class ClientData
     public TextAsset inkFile;
     public Sprite clientSpriteLayingDown;
     public Sprite portrait;
+
+    [Header("Expression Sprites")]
+    public Sprite[] expressionSprites; // 0=neutral, 1=happy, 2=FakeHappy, 3=Mask
 }
 
 [System.Serializable]
@@ -45,9 +48,10 @@ public class DayManager : MonoBehaviour
 
         // Update UI portrait
         uiManager.UpdatePortrait(data.portrait);
+        
 
         // Start the Ink dialogue
-        dialogueManager.StartDialogue(data.inkFile);
+        dialogueManager.StartDialogue(data);
 
         // Assign the callback — must match the method name exactly
         dialogueManager.onDialogueEnd = OnDialogueFinished;

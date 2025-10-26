@@ -57,8 +57,7 @@ public class ClientInteraction : MonoBehaviour
 
         // Start this client's dialogue
         var clientData = dayManager.days[dayManager.currentDay].clients[dayManager.currentClient];
-        dialogueManager.StartDialogue(clientData.inkFile);
-        FindFirstObjectByType<UIManager>().UpdatePortrait(clientData.portrait);
+        dialogueManager.StartDialogue(clientData);
 
         dialogueManager.onDialogueEnd = () =>
         {

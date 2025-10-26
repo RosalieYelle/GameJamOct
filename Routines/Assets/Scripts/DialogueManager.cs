@@ -28,9 +28,9 @@ public class DialogueManager : MonoBehaviour
     //Sprite Changes
     [Header("Character Portrait")]
     public Image characterImage; // Drag your UI Image here
-
-    [Tooltip("0 = neutral, 1 = happy, 2 = angry, 3 = surprised (in order you decide)")]
-    public Sprite[] expressionSprites;
+    public Image expressionImage; 
+    public Image layingDownImage;
+    private Sprite[] currentClientExpressions;
 
     void Update()
     {
@@ -52,9 +52,21 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(TextAsset inkJSON)
+    public void StartDialogue(ClientData clientData)
     {
-        story = new Story(inkJSON.text);
+        story = new Story(clientData.inkFile.text);
+        currentClientExpressions = clientData.expressionSprites; 
+
+        // Initialize base face
+        if (characterImage != null && clientData.portrait != null)
+            characterImage.sprite = clientData.portrait;
+
+        // Expression overlay
+        if (expressionImage != null && currentClientExpressions.Length > 0)
+            expressionImage.sprite = currentClientExpressions[0];
+
+        layingDownImage.sprite = clientData.clientSpriteLayingDown;
+
         RefreshUI();
     }
 
@@ -122,6 +134,7 @@ public class DialogueManager : MonoBehaviour
         RefreshUI();
     }
 
+
     IEnumerator TypeText(string text)
     {
         isTyping = true;
@@ -177,26 +190,33 @@ public class DialogueManager : MonoBehaviour
 
     void ChangeSprite(string spriteName)
     {
-        Debug.Log("Changing sprite to: " + spriteName);
+        if (currentClientExpressions == null || currentClientExpressions.Length == 0)
+            return;
+
+        Sprite newExpression = null;
+
         switch (spriteName)
         {
             case "neutral":
-                characterImage.sprite = expressionSprites[0];
+                newExpression = currentClientExpressions[0];
                 break;
             case "happy":
-                characterImage.sprite = expressionSprites[1];
+                newExpression = currentClientExpressions.Length > 1 ? currentClientExpressions[1] : currentClientExpressions[0];
                 break;
             case "angry":
-                characterImage.sprite = expressionSprites[2];
+                newExpression = currentClientExpressions.Length > 2 ? currentClientExpressions[2] : currentClientExpressions[0];
                 break;
             case "surprised":
-                characterImage.sprite = expressionSprites[3];
+                newExpression = currentClientExpressions.Length > 3 ? currentClientExpressions[3] : currentClientExpressions[0];
                 break;
             default:
                 Debug.LogWarning("Unknown sprite tag: " + spriteName);
                 break;
         }
-        characterImage.preserveAspect = true; 
+
+        // Apply only to the overlay
+        expressionImage.sprite = newExpression;
+        expressionImage.preserveAspect = true; 
     }
 
 
