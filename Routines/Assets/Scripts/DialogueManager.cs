@@ -54,6 +54,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(ClientData clientData)
     {
+        string inkJson = clientData.inkFile.text;
         story = new Story(clientData.inkFile.text);
 
         GlobalInkVarStore.Instance.PushToStory(story);
