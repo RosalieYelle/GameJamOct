@@ -9,12 +9,12 @@ public class ClientInteraction : MonoBehaviour
     public GameObject interactUI; //Press E text
     public CinemachineCamera closeUpCamera;
     public CinemachineCamera mainCamera; //Top down cam
-
-    public TextAsset dialogueInkFile; // Ink File
     private DialogueManager dialogueManager;
 
     private bool playerInRange;
     private bool dialogueStarted = false;
+
+    public UIManager uiManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +33,16 @@ public class ClientInteraction : MonoBehaviour
     }
     void StartDialogue()
     {
+        var dayManager = FindFirstObjectByType<DayManager>();
+
+        // SAFETY CHECK
+        if (dayManager.currentDay >= dayManager.days.Length ||
+            dayManager.currentClient >= dayManager.days[dayManager.currentDay].clients.Length)
+        {
+            Debug.LogWarning("No more clients today!");
+            return;
+        }
+
         dialogueStarted = true;
 
         // Switch cameras
@@ -45,10 +55,18 @@ public class ClientInteraction : MonoBehaviour
         // Disable player movement
         FindFirstObjectByType<PlayerController>().canMove = false;
 
-        // Start the Ink story
-        dialogueManager.StartDialogue(dialogueInkFile);
-        dialogueManager.onDialogueEnd = EndInteraction;
+        // Start this client's dialogue
+        var clientData = dayManager.days[dayManager.currentDay].clients[dayManager.currentClient];
+        dialogueManager.StartDialogue(clientData.inkFile);
+        FindFirstObjectByType<UIManager>().UpdatePortrait(clientData.portrait);
+
+        dialogueManager.onDialogueEnd = () =>
+        {
+            EndInteraction();
+            dayManager.OnDialogueFinished();
+        };
     }
+
 
     public void EndInteraction()
     {

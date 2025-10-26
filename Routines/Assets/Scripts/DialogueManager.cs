@@ -75,6 +75,12 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
+        // If no sprite tag found on this line, show neutral by default
+        // if (!story.currentTags.Exists(t => t.StartsWith("sprite:")))
+        // {
+        //     ChangeSprite("neutral");
+        // }
+
         if (typingRoutine != null)
             StopCoroutine(typingRoutine);
 
@@ -87,7 +93,7 @@ public class DialogueManager : MonoBehaviour
             {
                 int choiceIndex = i;
                 var choice = story.currentChoices[i];
-                Button button = Instantiate(choiceButtonPrefab, choicesPanel.transform);
+                Button button = Instantiate(choiceButtonPrefab, choicesPanel.transform, false);
                 button.GetComponentInChildren<TMPro.TMP_Text>().text = choice.text;
                 button.onClick.AddListener(() => MakeChoice(choiceIndex));
                 button.gameObject.SetActive(true);
