@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.TextCore.Text;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     private bool waitingForContinue = false;
 
     //Styling
-    public float typingSpeed = 0.03f; // Medium speed
+    public float typingSpeed; // Medium speed
     public AudioSource audioSource;  // Blip sound source
     public GameObject continueIcon;  // (Press Space) blinking visual
     private Coroutine typingRoutine;
@@ -28,9 +30,9 @@ public class DialogueManager : MonoBehaviour
     //Sprite Changes
     [Header("Character Portrait")]
     public Image characterImage; // Drag your UI Image here
-    public Image expressionImage; 
+    public Image expressionImage;
     public Image layingDownImage;
-    private Sprite[] currentClientExpressions;
+    public Dictionary<string, Sprite> currentClientExpressions;
 
     void Update()
     {
@@ -52,10 +54,15 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(ClientData clientData)
+    public void StartDialogue(ClientData clientData, CharacterData character)
     {
+        //Debug.Log(clientData);
+        //Debug.Log(character);
+        //Debug.Log(clientData.inkFile);
         string inkJson = clientData.inkFile.text;
-        story = new Story(clientData.inkFile.text);
+        story = new Story(inkJson);
+
+        var name = clientData.name;
 
         GlobalInkVarStore.Instance.PushToStory(story);
 
@@ -110,19 +117,23 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("No value for 'inspired' yet");
         }
 
-        currentClientExpressions = clientData.expressionSprites; 
+        currentClientExpressions = character.expressionSprites;
 
         // Initialize base face
-        if (characterImage != null && clientData.portrait != null)
-            characterImage.sprite = clientData.portrait;
+        if (characterImage != null && character.portrait != null)
+            characterImage.sprite = character.portrait;
 
         // Expression overlay
-        if (expressionImage != null && currentClientExpressions.Length > 0)
-            expressionImage.sprite = currentClientExpressions[0];
-
-        layingDownImage.sprite = clientData.clientSpriteLayingDown;
+        if (expressionImage != null && currentClientExpressions.Count > 0)
+            expressionImage.sprite = currentClientExpressions["neutral"];
 
         RefreshUI();
+    }
+    
+    public void ChangeClient(CharacterData character)
+    {
+        layingDownImage.sprite = character.clientSpriteLayingDown;
+        //RefreshUI();
     }
 
     void RefreshUI()
@@ -133,11 +144,12 @@ public class DialogueManager : MonoBehaviour
         string text = "";
 
         // Handle any tags from the current line
-        HandleTags(story.currentTags);
+        //Debug.Log("Current Tags: " + string.Join(", ", story.currentTags));
 
         while (story.canContinue)
         {
             text += story.Continue();
+            HandleTags(story.currentTags);
             if (story.currentChoices.Count > 0)
                 break;
         }
@@ -225,7 +237,7 @@ public class DialogueManager : MonoBehaviour
     }
     //For the different sprite expressions
     void HandleTags(System.Collections.Generic.List<string> tags)
-    {
+    { 
         foreach (string tag in tags)
         {
             Debug.Log("Raw Tag: " + tag);
@@ -243,12 +255,16 @@ public class DialogueManager : MonoBehaviour
 
     void ChangeSprite(string spriteName)
     {
-        if (currentClientExpressions == null || currentClientExpressions.Length == 0)
+        Debug.Log("Changing sprite to: " + spriteName);
+        if (currentClientExpressions == null || currentClientExpressions.Count == 0)
+        {
+            Debug.Log("We Returned From Here!");
             return;
+        }
 
-        Sprite newExpression = null;
+        Sprite newExpression = currentClientExpressions[spriteName];
 
-        switch (spriteName)
+        /*switch (spriteName)
         {
             case "neutral":
                 newExpression = currentClientExpressions[0];
@@ -268,11 +284,12 @@ public class DialogueManager : MonoBehaviour
             default:
                 Debug.LogWarning("Unknown sprite tag: " + spriteName);
                 break;
-        }
+        }*/
 
         // Apply only to the overlay
         expressionImage.sprite = newExpression;
-        expressionImage.preserveAspect = true; 
+        characterImage.sprite = newExpression;
+        //expressionImage.preserveAspect = false; 
     }
 
 
