@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.TextCore.Text;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     private bool waitingForContinue = false;
 
     //Styling
-    public float typingSpeed = 0.03f; // Medium speed
+    public float typingSpeed; // Medium speed
     public AudioSource audioSource;  // Blip sound source
     public GameObject continueIcon;  // (Press Space) blinking visual
     private Coroutine typingRoutine;
@@ -28,9 +30,9 @@ public class DialogueManager : MonoBehaviour
     //Sprite Changes
     [Header("Character Portrait")]
     public Image characterImage; // Drag your UI Image here
-    public Image expressionImage; 
+    public Image expressionImage;
     public Image layingDownImage;
-    private Sprite[] currentClientExpressions;
+    public Dictionary<string, Sprite> currentClientExpressions;
 
     void Update()
     {
@@ -52,22 +54,86 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(ClientData clientData)
+    public void StartDialogue(ClientData clientData, CharacterData character)
     {
-        story = new Story(clientData.inkFile.text);
-        currentClientExpressions = clientData.expressionSprites; 
+        //Debug.Log(clientData);
+        //Debug.Log(character);
+        //Debug.Log(clientData.inkFile);
+        string inkJson = clientData.inkFile.text;
+        story = new Story(inkJson);
+
+        var name = clientData.name;
+
+        GlobalInkVarStore.Instance.PushToStory(story);
+
+        object value;
+        if (GlobalInkVarStore.Instance.TryGet("break_up", out value))
+        {
+            int break_up_value = (int)value;
+            Debug.Log("break_up:" + break_up_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'break_up' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("ending", out value))
+        {
+            string ending_value = (string)value;
+            Debug.Log("ending:" + ending_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'ending' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("mask_bernadette", out value))
+        {
+            bool mask_bernadette_value = (bool)value;
+            Debug.Log("mask_bernadette:" + mask_bernadette_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'mask_bernadette' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("mask_mateo", out value))
+        {
+            bool mask_mateo_value = (bool)value;
+            Debug.Log("mask_mateo:" + mask_mateo_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'mask_mateo' yet");
+        }
+
+        if (GlobalInkVarStore.Instance.TryGet("inspired", out value))
+        {
+            bool inspired_value = (bool)value;
+            Debug.Log("inspired:" + inspired_value);
+        }
+        else
+        {
+            Debug.Log("No value for 'inspired' yet");
+        }
+
+        currentClientExpressions = character.expressionSprites;
 
         // Initialize base face
-        if (characterImage != null && clientData.portrait != null)
-            characterImage.sprite = clientData.portrait;
+        if (characterImage != null && character.portrait != null)
+            characterImage.sprite = character.portrait;
 
         // Expression overlay
-        if (expressionImage != null && currentClientExpressions.Length > 0)
-            expressionImage.sprite = currentClientExpressions[0];
-
-        layingDownImage.sprite = clientData.clientSpriteLayingDown;
+        if (expressionImage != null && currentClientExpressions.Count > 0)
+            expressionImage.sprite = currentClientExpressions["neutral"];
 
         RefreshUI();
+    }
+    
+    public void ChangeClient(CharacterData character)
+    {
+        layingDownImage.sprite = character.clientSpriteLayingDown;
+        //RefreshUI();
     }
 
     void RefreshUI()
@@ -78,20 +144,15 @@ public class DialogueManager : MonoBehaviour
         string text = "";
 
         // Handle any tags from the current line
-        HandleTags(story.currentTags);
+        //Debug.Log("Current Tags: " + string.Join(", ", story.currentTags));
 
         while (story.canContinue)
         {
             text += story.Continue();
+            HandleTags(story.currentTags);
             if (story.currentChoices.Count > 0)
                 break;
         }
-
-        // If no sprite tag found on this line, show neutral by default
-        // if (!story.currentTags.Exists(t => t.StartsWith("sprite:")))
-        // {
-        //     ChangeSprite("neutral");
-        // }
 
         if (typingRoutine != null)
             StopCoroutine(typingRoutine);
@@ -117,6 +178,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            GlobalInkVarStore.Instance.PullFromStory(story);
             onDialogueEnd?.Invoke();
         }
 
@@ -139,6 +201,9 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
+        dialogueText.enableAutoSizing = false;
+        dialogueText.fontSize = 0.35f;
+        text = text.Replace("\n", "\n\n");
         currentLine = text;
 
         foreach (char c in text)
@@ -172,12 +237,12 @@ public class DialogueManager : MonoBehaviour
     }
     //For the different sprite expressions
     void HandleTags(System.Collections.Generic.List<string> tags)
-    {
+    { 
         foreach (string tag in tags)
         {
             Debug.Log("Raw Tag: " + tag);
 
-            if (tag.StartsWith("sprite:"))
+            if (tag.StartsWith("face:"))
             {
                 string[] splitTag = tag.Split(' ');
                 string spriteTagPart = splitTag[0];  // only keep first token
@@ -190,12 +255,16 @@ public class DialogueManager : MonoBehaviour
 
     void ChangeSprite(string spriteName)
     {
-        if (currentClientExpressions == null || currentClientExpressions.Length == 0)
+        Debug.Log("Changing sprite to: " + spriteName);
+        if (currentClientExpressions == null || currentClientExpressions.Count == 0)
+        {
+            Debug.Log("We Returned From Here!");
             return;
+        }
 
-        Sprite newExpression = null;
+        Sprite newExpression = currentClientExpressions[spriteName];
 
-        switch (spriteName)
+        /*switch (spriteName)
         {
             case "neutral":
                 newExpression = currentClientExpressions[0];
@@ -203,20 +272,24 @@ public class DialogueManager : MonoBehaviour
             case "happy":
                 newExpression = currentClientExpressions.Length > 1 ? currentClientExpressions[1] : currentClientExpressions[0];
                 break;
-            case "angry":
+            case "fake_happy":
                 newExpression = currentClientExpressions.Length > 2 ? currentClientExpressions[2] : currentClientExpressions[0];
                 break;
-            case "surprised":
+            case "mask_happy":
                 newExpression = currentClientExpressions.Length > 3 ? currentClientExpressions[3] : currentClientExpressions[0];
+                break;
+            case "mask_neutral":
+                newExpression = currentClientExpressions.Length > 4 ? currentClientExpressions[4] : currentClientExpressions[0];
                 break;
             default:
                 Debug.LogWarning("Unknown sprite tag: " + spriteName);
                 break;
-        }
+        }*/
 
         // Apply only to the overlay
         expressionImage.sprite = newExpression;
-        expressionImage.preserveAspect = true; 
+        characterImage.sprite = newExpression;
+        //expressionImage.preserveAspect = false; 
     }
 
 

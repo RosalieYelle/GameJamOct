@@ -1,19 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10f;
+    public Sprite move_sprite;
+    public Sprite stand_sprite;
+    public float speed = 5f;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
     private float moveX;
     private float moveY;
+    private bool moving = false;
 
     public bool canMove = true;
 
 
     void Start()
     {
+        speed = 4f;
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         // MoveAction.Enable(); 
     }
 
@@ -51,6 +58,29 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 newPos = rb.position + new Vector2(moveX, moveY) * speed * Time.fixedDeltaTime;
+
+        if (moveX < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        if (moveX > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        /*if ((!moving) && (moveX != 0 || moveY != 0))
+        {
+            spriteRenderer.sprite = move_sprite;
+            moving = true;
+        }
+
+        if (moving && moveX == 0 && moveY == 0)
+        {
+            spriteRenderer.sprite = stand_sprite;
+            moving = false;
+        } */
+        
         rb.MovePosition(newPos);
     }
 }
