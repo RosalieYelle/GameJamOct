@@ -1,86 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-    public Sprite move_sprite;
-    public Sprite stand_sprite;
-    public float speed = 5f;
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private float moveX;
-    private float moveY;
-    private bool moving = false;
-
     public bool canMove = true;
+    public InputAction MoveAction;
 
+    private Rigidbody2D rb;
+    private Animator animator;
+    //To flip the sprite
+    private SpriteRenderer spriteRenderer;
+    public float moveSpeed = 5f;
 
     void Start()
     {
-        speed = 4f;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // MoveAction.Enable(); 
-    }
-
-    void Update()
-    {
-
-        // Makes the player unabe to move in dialogue
-        if (!canMove)
-        {
-            return;
-        }
-
-        moveX = 0f; //No movement
-        moveY = 0f; //No movement
-
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-        {
-            moveX = -1f; // move left
-        }
-        else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-        {
-            moveX = 1f; // move right
-        }
-
-        if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
-        {
-            moveY = 1f; // move left
-        }
-        else if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
-        {
-            moveY = -1f; // move right
-        }
+        MoveAction.Enable();
     }
 
     void FixedUpdate()
     {
-        Vector2 newPos = rb.position + new Vector2(moveX, moveY) * speed * Time.fixedDeltaTime;
-
-        if (moveX < 0)
+        // Makes the player unabe to move in dialogue
+        if (!canMove)
         {
-            spriteRenderer.flipX = false;
+            animator.SetFloat("MoveX", 0);
+            return;
         }
 
-        if (moveX > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
+        Vector2 move = MoveAction.ReadValue<Vector2>();
+        rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+        animator.SetFloat("MoveX", move.x);
 
-        /*if ((!moving) && (moveX != 0 || moveY != 0))
+        //Flip the animation
+        if (move.x > 0.1f)
         {
-            spriteRenderer.sprite = move_sprite;
-            moving = true;
+           spriteRenderer.flipX = true; //Sprite facing right
+        }else if(move.x < -0.1f){
+           spriteRenderer.flipX = false; //Sprite facing left
         }
-
-        if (moving && moveX == 0 && moveY == 0)
-        {
-            spriteRenderer.sprite = stand_sprite;
-            moving = false;
-        } */
-        
-        rb.MovePosition(newPos);
     }
 }
