@@ -1431,8 +1431,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -951.01135, y: -529.92}
-  m_SizeDelta: {x: 5.6748, y: 8.5643}
+  m_AnchoredPosition: {x: -951.02, y: -529.7925}
+  m_SizeDelta: {x: 8.2448, y: 10.7801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502426889
 MonoBehaviour:
@@ -1653,6 +1653,7 @@ GameObject:
   - component: {fileID: 534904279}
   - component: {fileID: 534904280}
   - component: {fileID: 534904281}
+  - component: {fileID: 534904282}
   m_Layer: 5
   m_Name: DialogueAudio
   m_TagString: Untagged
@@ -1802,6 +1803,28 @@ MonoBehaviour:
   currentClient: 0
   newDay: 1
   newClient: 1
+--- !u!95 &534904282
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534904278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc1c85943772ed64183bb5dd0dc26a49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &538378848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,6 +4663,7 @@ GameObject:
   - component: {fileID: 1615330676}
   - component: {fileID: 1615330680}
   - component: {fileID: 1615330679}
+  - component: {fileID: 1615330681}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4721,12 +4745,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1036833082192815319, guid: 47bb7c14ca8ff7b40957dcfd4c0841c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66bd09badfaba004aa288a50f16ab881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7291666, y: 1.6145833}
+  m_Size: {x: 0.8333333, y: 1.6145833}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4785,8 +4809,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7291666, y: 1.6145833}
-    newSize: {x: 0.7291666, y: 1.6145833}
+    oldSize: {x: 0.8333333, y: 1.6145833}
+    newSize: {x: 0.8333333, y: 1.6145833}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -4805,10 +4829,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18dabe9444c7b644a6655a82fa5b0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  move_sprite: {fileID: 8371646611146495941, guid: d2282520d82e5ff42b13ea788bd4f1f4, type: 3}
-  stand_sprite: {fileID: 7565427525952965263, guid: 66bd09badfaba004aa288a50f16ab881, type: 3}
-  speed: 10
   canMove: 1
+  MoveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 04d18055-0c0e-4668-80a2-d1aab712c4bc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 8cc1175a-0c92-44a6-a66b-a189c26c67af
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 44717590-c5cf-4d38-abab-2cdf37110744
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: e286af41-c928-4636-a7a4-b97a1b5c44a9
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: bf0e7553-1fdd-4518-8015-8000004cd84c
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 98ed1334-47f4-495e-859f-4e404e508a70
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
+  moveSpeed: 5
+--- !u!95 &1615330681
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615330675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d25daed03ea93f47b387941639cfb05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1643333952
 GameObject:
   m_ObjectHideFlags: 0
